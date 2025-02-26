@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Tích Hợp Ứng Dụng</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            font-family: Arial, sans-serif;
+        }
+        .content {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ECF0F1;
+            flex-direction: column;
+            text-align: center;
+        }
+        iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+            display: none; /* Ban đầu ẩn iFrame */
+        }
+        .welcome {
+            display: block; /* Hiển thị màn hình chào mừng ban đầu */
+        }
+        .welcome img {
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #2C3E50;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            display: block;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .sidebar a:hover {
+            background: #34495E;
+        }
+        .content {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ECF0F1;
+        }
+        iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>VITECO - Ứng dụng</h2>
+        <a onclick="loadApp('https://onedrive.live.com/?id=root&cid=AA95F7AB817F7EE3')">OneDrive</a>
+        <a onclick="loadApp('https://web.telegram.org/a/')">Telegram</a>
+        <a onclick="loadApp('https://chat.zalo.me/', true)">Zalo</a>
+        <a onclick="loadApp('https://trello.com/b/tGfn4EHl/p-x%E1%BB%AD-ly-d%C6%A1n-hang')">Trello</a>
+        <a onclick="loadApp('https://docs.google.com/spreadsheets/d/17KIedPOTqwBnzG_HwD309kV7CE7tyYmiKPnhdw4UQ0A/edit?gid=0#gid=0', true)">P. KINH DOANH</a>
+        <a onclick="loadApp('https://docs.google.com/spreadsheets/d/1oiRubZvntAFbWE6k1I4j9i_MxDtvvAkzvQCbFVmkcSM/edit?gid=0#gid=0', true)">P. NGHIỆP VỤ</a>
+        <a onclick="loadApp('https://docs.google.com/spreadsheets/d/1rvshmh9o8_sfzP4-uc1TwojMjRZIKX0HSUMn1MTV15E/edit?gid=0#gid=0', true)">P. TÀI CHÍNH</a>
+    </div>
+   <div class="content" id="contentContainer">
+        <div class="welcome" id="welcomeScreen">
+            <img src="https://c1nguyendu.pgdcujut.edu.vn/wp-content/uploads/2022/07/nhung-hinh-nen-powerpoint-mo-dau-dep-va-an-tuong-nhat-670712.jpg" alt="Welcome Image">
+            <h2>Welcome to the VITECO</h2>
+            <p>Chọn một ứng dụng từ danh sách bên trái để bắt đầu làm việc.</p>
+        </div>
+        <iframe id="appFrame" src=""></iframe>
+    </div>
+    <script>
+        function loadApp(url, useIframe) {
+            document.getElementById('welcomeScreen').style.display = 'none'; // Ẩn màn hình Welcome khi mở ứng dụng
+   		let frame = document.getElementById('appFrame');
+    
+  	  if (useIframe) {
+       		 frame.src = url;
+        	frame.style.display = 'block'; // Hiển thị iFrame nếu ứng dụng hỗ trợ
+   	 } else {
+       		 window.open(url, '_blank'); // Mở trong cửa sổ mới nếu không hỗ trợ iFrame
+   	 }
+        }
+    </script>
+</body>
+</html>
